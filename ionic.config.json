@@ -1,0 +1,7 @@
+{
+  "name": "vittalManager",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}
