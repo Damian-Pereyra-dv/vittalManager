@@ -93,3 +93,18 @@ http://ionicframework.com/docs/theming/ */
   font-weight: bold;
   text-transform: uppercase;
 }
+
+
+.md.title-default {
+ font-size: 30px;
+ font-weight: bold;
+ padding-bottom: 20px;
+}
+.md ion-card{
+
+  background-color: #00ff951c;
+  padding-top: 15px;
+
+
+}
+

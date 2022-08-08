@@ -87,7 +87,7 @@ const Menu: React.FC = () => {
       <IonContent>
         <IonList id="inbox-list">
           <IonListHeader><img src="https://i0.wp.com/www.belgranostudio.com/wp-content/uploads/2016/02/vittal-logo.png?ssl=1" alt="" /></IonListHeader>
-          <IonNote>hi@ionicframework.com</IonNote>
+          <IonNote>    By Damian E. Pereyra</IonNote>
           {appPages.map((appPage, index) => {
             return (
               <IonMenuToggle key={index} autoHide={false}>

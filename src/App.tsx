@@ -23,6 +23,7 @@ import '@ionic/react/css/display.css';
 
 /* Theme variables */
 import './theme/variables.css';
+import PacienteEdit from './pages/pacient/PacienteEdit';
 
 
 setupIonicReact();
@@ -43,6 +44,9 @@ const App: React.FC = () => {
              <PacientList />
             </Route>
             
+            <Route path="/page/pacientes/:id" exact={true}>
+             <PacienteEdit />
+            </Route>
 
           </IonRouterOutlet>
         </IonSplitPane>
