@@ -41,40 +41,24 @@ interface AppPage {
 const appPages: AppPage[] = [
   {
     title: "Pacientes",
-    url: "/page/Pacientes",
+    url: "/page/Paciente",
     iosIcon: peopleOutline,
     mdIcon: people,
   },
   {
-    title: "Outbox",
-    url: "/page/Outbox",
+    title: "Servicios",
+    url: "/page/nurseServices",
     iosIcon: paperPlaneOutline,
     mdIcon: paperPlaneSharp,
   },
+
   {
-    title: "Favorites",
-    url: "/page/Favorites",
-    iosIcon: heartOutline,
-    mdIcon: heartSharp,
+    title: "Enfermeros",
+    url: "/page/NurseEmployee",
+    iosIcon: paperPlaneOutline,
+    mdIcon: paperPlaneSharp,
   },
-  {
-    title: "Archived",
-    url: "/page/Archived",
-    iosIcon: archiveOutline,
-    mdIcon: archiveSharp,
-  },
-  {
-    title: "Trash",
-    url: "/page/Trash",
-    iosIcon: trashOutline,
-    mdIcon: trashSharp,
-  },
-  {
-    title: "Spam",
-    url: "/page/Spam",
-    iosIcon: warningOutline,
-    mdIcon: warningSharp,
-  },
+  
 ];
 
 const labels = ["Family", "Friends", "Notes", "Work", "Travel", "Reminders"];
@@ -87,7 +71,7 @@ const Menu: React.FC = () => {
       <IonContent>
         <IonList id="inbox-list">
           <IonListHeader><img src="https://i0.wp.com/www.belgranostudio.com/wp-content/uploads/2016/02/vittal-logo.png?ssl=1" alt="" /></IonListHeader>
-          <IonNote>    By Damian E. Pereyra</IonNote>
+          <IonNote class="note">    Damian E. Pereyra</IonNote>
           {appPages.map((appPage, index) => {
             return (
               <IonMenuToggle key={index} autoHide={false}>

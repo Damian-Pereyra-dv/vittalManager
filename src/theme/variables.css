@@ -108,3 +108,10 @@ http://ionicframework.com/docs/theming/ */
 
 }
 
+.divService .sc-ion-input-md {
+  height: 70px;
+}
+
+.sc-ion-alert-md-h {
+  --min-width: 350px;
+}

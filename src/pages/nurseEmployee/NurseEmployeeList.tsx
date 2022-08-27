@@ -19,14 +19,14 @@ import { add, close, pencil } from "ionicons/icons";
 import { useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router";
 import ExploreContainer from "../../components/ExploreContainer";
-import Paciente from "./Paciente";
-import paciente from "./Paciente";
-import { removePaciente, savePaciente, searchPacientes } from "./PacienteApi";
+import NurseEmployee from "./NurseEmployee";
+import nurseEmployee from "./NurseEmployee";
+import { removeNurseEmployee, saveNurseEmployee, searchNurseEmployees } from "./NurseEmployeeApi";
 
-const PacientList: React.FC = (props: any) => {
+const NurseEmployeeList: React.FC = (props: any) => {
   const { name } = useParams<{ name: string }>();
 
-  const [pacientes, setPacientes] = useState<Paciente[]>([]);
+  const [nurseEmployees, setNurseEmployees] = useState<NurseEmployee[]>([]);
 
   const history = useHistory();
 
@@ -36,23 +36,23 @@ const PacientList: React.FC = (props: any) => {
   }, [history.location.pathname]);
 
   const search = () => {
-    let result = searchPacientes();
-    setPacientes(result);
+    let result = searchNurseEmployees();
+    setNurseEmployees(result);
   };
 
   const remove = (id: string) => {
-    removePaciente(id);
+    removeNurseEmployee(id);
     search();
   };
 
   
 
-  const addPaciente = () => {
-    history.push("/page/paciente/new");
+  const addNurseEmployee = () => {
+    history.push("/page/nurseEmployee/new");
   };
 
-  const editPaciente = (id: string) => {
-    history.push("/page/Paciente/" + id);
+  const editNurseEmployee = (id: string) => {
+    history.push("/page/NurseEmployee/" + id);
   };
   return (
     <IonPage>
@@ -73,44 +73,44 @@ const PacientList: React.FC = (props: any) => {
         </IonHeader>
 
         <IonCard class="card">
-          <IonTitle>Gestion de Pacientes</IonTitle>
+          <IonTitle>Gestion de Enfermeros</IonTitle>
 
           <IonItem>
             <IonButton
-              onClick={addPaciente}
+              onClick={addNurseEmployee}
               color="primary"
               fill="solid"
               slot="end"
               size="default"
             >
               <IonIcon icon={add} />
-              Agregar paciente
+              Agregar Enfermero
             </IonButton>
           </IonItem>
           <IonGrid class="table">
             <IonRow>
               <IonCol>Nombre</IonCol>
-              <IonCol>Edad</IonCol>
+              
               <IonCol>Email</IonCol>
               <IonCol>Telefono</IonCol>
-              <IonCol>Direccion</IonCol>
-              <IonCol>Servicio</IonCol>
+             
+              <IonCol>Paciente Asignado</IonCol>
               <IonCol>Acciones</IonCol>
             </IonRow>
 
-            {pacientes.map((paciente: Paciente) => (
+            {nurseEmployees.map((nurseEmployee: NurseEmployee) => (
               <IonRow>
                 <IonCol>
-                  {paciente.firstName} {paciente.lastName}
+                  {nurseEmployee.firstName} {nurseEmployee.lastName}
                 </IonCol>
-                <IonCol>{paciente.age}</IonCol>
-                <IonCol>{paciente.email}</IonCol>
-                <IonCol>{paciente.phone}</IonCol>
-                <IonCol>{paciente.adress}</IonCol>
-                <IonCol>{paciente.service}</IonCol>
+                
+                <IonCol>{nurseEmployee.email}</IonCol>
+                <IonCol>{nurseEmployee.phone}</IonCol>
+             
+                <IonCol>{nurseEmployee.pacient}</IonCol>
                 <IonCol>
                   <IonButton
-                    onClick={() => editPaciente(String(paciente.id))}
+                    onClick={() => editNurseEmployee(String(nurseEmployee.id))}
                     color="primary"
                     fill="solid"
                     size="small"
@@ -118,7 +118,7 @@ const PacientList: React.FC = (props: any) => {
                     <IonIcon icon={pencil} slot="icon-only" />
                   </IonButton>
                   <IonButton
-                    onClick={() => remove(String(paciente.id))}
+                    onClick={() => remove(String(nurseEmployee.id))}
                     color="danger"
                     fill="solid"
                     size="small"
@@ -135,4 +135,4 @@ const PacientList: React.FC = (props: any) => {
   );
 };
 
-export default PacientList;
+export default NurseEmployeeList;

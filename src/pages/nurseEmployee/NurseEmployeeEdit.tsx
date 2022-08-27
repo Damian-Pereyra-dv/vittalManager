@@ -25,19 +25,19 @@ import { useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router";
 import ExploreContainer from "../../components/ExploreContainer";
 import NurseService from "../nurseService/NurseService";
-import Paciente from "./Paciente";
-import paciente from "./Paciente";
+import NurseEmployee from "./NurseEmployee";
+import nurseEmployee from "./NurseEmployee";
 import {
-  removePaciente,
-  savePaciente,
-  searchPacientes,
-  searchPacienteById,
-} from "./PacienteApi";
+  removeNurseEmployee,
+  saveNurseEmployee,
+  searchNurseEmployees,
+  searchNurseEmployeeById,
+} from "./NurseEmployeeApi";
 
-const PacienteEdit: React.FC = () => {
+const NurseEmployeeEdit: React.FC = () => {
   const { name, id } = useParams<{ name: string; id: string }>();
 
-  const [paciente, setPaciente] = useState<Paciente>({});
+  const [nurseEmployee, setNurseEmployee] = useState<NurseEmployee>({});
   const [nurseServices, setNurseServices] = useState<NurseService[]>([]);
 
   const history = useHistory();
@@ -49,15 +49,15 @@ const PacienteEdit: React.FC = () => {
 
   const search = () => {
     if (id !== "new") {
-      let result = searchPacienteById(id);
-      setPaciente(result);
+      let result = searchNurseEmployeeById(id);
+      setNurseEmployee(result);
     }
   };
 
   const save = () => {
-    savePaciente(paciente);
+    saveNurseEmployee(nurseEmployee);
    
-    history.push("/page/Paciente");
+    history.push("/page/NurseEmployee");
     window.location.reload()
   };
 
@@ -82,7 +82,7 @@ const PacienteEdit: React.FC = () => {
         <IonContent>
           <IonCard>
             <IonTitle>
-              {id === "new" ? "Agregar Paciente" : "Editar Paciente"}
+              {id === "new" ? "Agregar Enfermero" : "Editar Enfermero"}
             </IonTitle>
 
             <IonRow>
@@ -90,8 +90,8 @@ const PacienteEdit: React.FC = () => {
                 <IonItem>
                   <IonLabel position="stacked">Nombre</IonLabel>
                   <IonInput
-                    onIonChange={(e) => (paciente.firstName = String(e.detail.value))}
-                    value={paciente.firstName}
+                    onIonChange={(e) => (nurseEmployee.firstName = String(e.detail.value))}
+                    value={nurseEmployee.firstName}
                   >
                     {" "}
                   </IonInput>
@@ -102,8 +102,8 @@ const PacienteEdit: React.FC = () => {
                 <IonItem>
                   <IonLabel position="stacked">Apellido</IonLabel>
                   <IonInput
-                    onIonChange={(e) => (paciente.lastName =String(e.detail.value))}
-                    value={paciente.lastName}
+                    onIonChange={(e) => (nurseEmployee.lastName =String(e.detail.value))}
+                    value={nurseEmployee.lastName}
                   >
                     {" "}
                   </IonInput>
@@ -111,24 +111,14 @@ const PacienteEdit: React.FC = () => {
               </IonCol>
             </IonRow>
             <IonRow>
-              <IonCol>
-                <IonItem>
-                  <IonLabel position="stacked">Edad</IonLabel>
-                  <IonInput
-                    onIonChange={(e) => (paciente.age = String (e.detail.value))}
-                    value={paciente.age}
-                  >
-                    {" "}
-                  </IonInput>
-                </IonItem>
-              </IonCol>
+            
 
               <IonCol>
                 <IonItem>
                   <IonLabel position="stacked">Email</IonLabel>
                   <IonInput
-                    onIonChange={(e) => (paciente.email = String(e.detail.value))}
-                    value={paciente.email}
+                    onIonChange={(e) => (nurseEmployee.email = String(e.detail.value))}
+                    value={nurseEmployee.email}
                   >
                     {" "}
                   </IonInput>
@@ -141,45 +131,35 @@ const PacienteEdit: React.FC = () => {
                 <IonItem>
                   <IonLabel position="stacked">Telefono</IonLabel>
                   <IonInput
-                    onIonChange={(e) => (paciente.phone =String( e.detail.value))}
-                    value={paciente.phone}
+                    onIonChange={(e) => (nurseEmployee.phone =String( e.detail.value))}
+                    value={nurseEmployee.phone}
                   >
                     {" "}
                   </IonInput>
                 </IonItem>
               </IonCol>
-              <IonCol>
-                <IonItem>
-                  <IonLabel position="stacked">Calle/nro/Localidad</IonLabel>
-                  <IonInput
-                    onIonChange={(e) => (paciente.adress = String(e.detail.value))}
-                    value={paciente.adress}
-                  >
-                    {" "}
-                  </IonInput>
-                </IonItem>
-              </IonCol>
+             
             </IonRow>
             <IonRow>
               <IonCol>
                 <IonItem>
-                  <IonLabel position="stacked">Servicio</IonLabel>
+                  <IonLabel position="stacked">Paciente Asignado</IonLabel>
                   <IonInput class="divService"
                   
-                    onIonChange={(e) => (paciente.service = String (e.detail.value))}
-                    value={paciente.service} >
+                    onIonChange={(e) => (nurseEmployee.pacient = String (e.detail.value))}
+                    value={nurseEmployee.pacient} >
                       
 
 <IonList>
       <IonItem>
-        <IonSelect placeholder="Seleccione Servicio">
+        <IonSelect placeholder="Seleccione Paciente">
 
          
    
-          <IonSelectOption value="Aplicacion de inyectable">Aplicacion de inyectable</IonSelectOption>
-          <IonSelectOption value="Test-Covid-19">Test-Covid-19</IonSelectOption>
-          <IonSelectOption value="Enema">Enema</IonSelectOption>
-          <IonSelectOption value="Control de TA">Control de TA</IonSelectOption>
+          <IonSelectOption value="Damian Pereyra ID: 65487">Damian Pereyra ID: 65487</IonSelectOption>
+          <IonSelectOption value="Laura Pinto ID:48643">Laura Pinto ID:48643</IonSelectOption>
+          <IonSelectOption value="Victoria Morinico ID:54664">Victoria Morinico ID:54664</IonSelectOption>
+          <IonSelectOption value="Miriam Mignoli ID:46541">Miriam Mignoli ID:46541</IonSelectOption>
           
         </IonSelect>
       </IonItem>
@@ -210,4 +190,4 @@ const PacienteEdit: React.FC = () => {
   );
 };
 
-export default PacienteEdit;
+export default NurseEmployeeEdit;

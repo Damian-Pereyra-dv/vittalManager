@@ -19,14 +19,14 @@ import { add, close, pencil } from "ionicons/icons";
 import { useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router";
 import ExploreContainer from "../../components/ExploreContainer";
-import Paciente from "./Paciente";
-import paciente from "./Paciente";
-import { removePaciente, savePaciente, searchPacientes } from "./PacienteApi";
+import NurseService from "./NurseService";
+import nurseService from "./NurseService";
+import { removeNurseService, saveNurseService, searchNurseServices } from "./NurseServiceApi";
 
 const PacientList: React.FC = (props: any) => {
   const { name } = useParams<{ name: string }>();
 
-  const [pacientes, setPacientes] = useState<Paciente[]>([]);
+  const [nurseServices, setNurseServices] = useState<NurseService[]>([]);
 
   const history = useHistory();
 
@@ -36,23 +36,23 @@ const PacientList: React.FC = (props: any) => {
   }, [history.location.pathname]);
 
   const search = () => {
-    let result = searchPacientes();
-    setPacientes(result);
+    let result = searchNurseServices();
+    setNurseServices(result);
   };
 
   const remove = (id: string) => {
-    removePaciente(id);
+    removeNurseService(id);
     search();
   };
 
   
 
-  const addPaciente = () => {
-    history.push("/page/paciente/new");
+  const addNurseService = () => {
+    history.push("/page/nurseService/new");
   };
 
-  const editPaciente = (id: string) => {
-    history.push("/page/Paciente/" + id);
+  const editNurseService = (id: string) => {
+    history.push("/page/nurseService/" + id);
   };
   return (
     <IonPage>
@@ -73,44 +73,39 @@ const PacientList: React.FC = (props: any) => {
         </IonHeader>
 
         <IonCard class="card">
-          <IonTitle>Gestion de Pacientes</IonTitle>
+          <IonTitle>Gestion de Servicios de enfermeria</IonTitle>
 
           <IonItem>
             <IonButton
-              onClick={addPaciente}
+              onClick={addNurseService}
               color="primary"
               fill="solid"
               slot="end"
               size="default"
             >
               <IonIcon icon={add} />
-              Agregar paciente
+              Agregar Servicio
             </IonButton>
           </IonItem>
           <IonGrid class="table">
             <IonRow>
-              <IonCol>Nombre</IonCol>
-              <IonCol>Edad</IonCol>
-              <IonCol>Email</IonCol>
-              <IonCol>Telefono</IonCol>
-              <IonCol>Direccion</IonCol>
               <IonCol>Servicio</IonCol>
+              <IonCol>Complejidad</IonCol>
+              <IonCol>Precio $</IonCol>
               <IonCol>Acciones</IonCol>
+             
             </IonRow>
 
-            {pacientes.map((paciente: Paciente) => (
+            {nurseServices.map((nurseService: NurseService) => (
               <IonRow>
-                <IonCol>
-                  {paciente.firstName} {paciente.lastName}
-                </IonCol>
-                <IonCol>{paciente.age}</IonCol>
-                <IonCol>{paciente.email}</IonCol>
-                <IonCol>{paciente.phone}</IonCol>
-                <IonCol>{paciente.adress}</IonCol>
-                <IonCol>{paciente.service}</IonCol>
+               
+                <IonCol>{nurseService.service}</IonCol>
+                <IonCol>{nurseService.difficult}</IonCol>
+                <IonCol>{nurseService.price}</IonCol>
+                
                 <IonCol>
                   <IonButton
-                    onClick={() => editPaciente(String(paciente.id))}
+                    onClick={() => editNurseService(String(nurseService.id))}
                     color="primary"
                     fill="solid"
                     size="small"
@@ -118,7 +113,7 @@ const PacientList: React.FC = (props: any) => {
                     <IonIcon icon={pencil} slot="icon-only" />
                   </IonButton>
                   <IonButton
-                    onClick={() => remove(String(paciente.id))}
+                    onClick={() => remove(String(nurseService.id))}
                     color="danger"
                     fill="solid"
                     size="small"

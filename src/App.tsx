@@ -24,6 +24,10 @@ import '@ionic/react/css/display.css';
 /* Theme variables */
 import './theme/variables.css';
 import PacienteEdit from './pages/pacient/PacienteEdit';
+import NurseServiceList from './pages/nurseService/NurseServiceList';
+import NurseServiceEdit from './pages/nurseService/NurseServiceEdit';
+import NurseEmployeeList from './pages/nurseEmployee/NurseEmployeeList';
+import NurseEmployeeEdit from './pages/nurseEmployee/NurseEmployeeEdit';
 
 
 setupIonicReact();
@@ -37,16 +41,43 @@ const App: React.FC = () => {
           <IonRouterOutlet id="main">
 
             <Route path="/" exact={true}>
-              <Redirect to="/page/pacientes" />
+              <Redirect to="/page/Paciente" />
             </Route>
 
-            <Route path="/page/pacientes" exact={true}>
+            <Route path="/page/Paciente" exact={true}>
              <PacientList />
             </Route>
             
-            <Route path="/page/pacientes/:id" exact={true}>
+            <Route path="/page/paciente/:id" exact={true}>
              <PacienteEdit />
             </Route>
+
+            <Route path="/page/nurseServices" exact={true}>
+            
+             <NurseServiceList />
+             
+            </Route>
+            
+            <Route path="/page/nurseService/:id" exact={true}>
+             <NurseServiceEdit />
+
+             
+             
+            </Route>
+
+            <Route path="/page/nurseEmployee" exact={true}>
+            
+            <NurseEmployeeList />
+            
+           </Route>
+           
+           <Route path="/page/nurseEmployee/:id" exact={true}>
+            <NurseEmployeeEdit />
+
+            
+            
+           </Route>
+
 
           </IonRouterOutlet>
         </IonSplitPane>
