@@ -8,17 +8,16 @@ Vittal Manager es una aplicación web para la gestión de servicios de enfermer�
 ## Backend
 1. Clona el repositorio de Vittal Manager desde GitHub.
 2. Navega hasta la carpeta del proyecto Backend.
-3. Ejecuta el siguiente comando para desplegar el Backend en el servidor local: "mvn spring-boot:run"
+3. Ejecuta el siguiente comando para desplegar el Backend en el servidor local: `mvn spring-boot:run`
 
   Esto iniciará el servidor Backend en `http://localhost:8080`.
 
 ## Frontend
 1. Navega hasta la carpeta del proyecto Frontend, que se encuentra en `resources/static`.
 2. Asegúrate de tener Node.js instalado en tu sistema.
-3. Ejecuta el siguiente comando para instalar las dependencias del proyecto: "npm install"
-4. Una vez completada la instalación, ejecuta el siguiente comando para iniciar el Frontend: "npm run start"
-
-
+3. Ejecuta el siguiente comando para instalar las dependencias del proyecto: `npm install`
+4. Una vez completada la instalación, ejecuta el siguiente comando para iniciar el Frontend: `npm run start`
+   
 Esto abrirá automáticamente la aplicación en tu navegador.
 
 ## Interacción entre Backend y Frontend
