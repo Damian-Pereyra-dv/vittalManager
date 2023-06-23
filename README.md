@@ -1,8 +1,8 @@
 # Guía de instalación de Vittal Manager
 
-![Texto alternativo](src/ =250x)
-![Texto alternativo](ruta/a/la/imagen.png =250x)
-![Texto alternativo](ruta/a/la/imagen.png =250x)
+![Texto alternativo](demo1.JPG)
+![Texto alternativo](demo2.JPG)
+![Texto alternativo](demo3.JPG)
 
 Vittal Manager es una aplicación web para la gestión de servicios de enfermería. Sigue los pasos a continuación para instalar y ejecutar la aplicación.
 
@@ -10,7 +10,7 @@ Vittal Manager es una aplicación web para la gestión de servicios de enfermer�
 - Base de datos: Asegúrate de tener una base de datos creada llamada "vittal". Hibernate utilizará esta base de datos para el funcionamiento de la aplicación.
 
 ## Backend
-1. Clona el repositorio de Vittal Manager desde GitHub.
+1. Clona el repositorio de VittalManagerV2 desde GitHub.
 2. Navega hasta la carpeta del proyecto Backend.
 3. Ejecuta el siguiente comando para desplegar el Backend en el servidor local: `mvn spring-boot:run`
 
